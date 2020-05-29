@@ -1,9 +1,118 @@
-<mvc:View controllerName="gs.GitDemo.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="gs.GitDemo.controller.App">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<Panel expandable="true" expanded="false" headerText="Header Info" width="auto" class="sapUiResponsiveMargin">
+						<content>
+							<f:Form>
+								<f:layout>
+									<f:ResponsiveGridLayout/>
+								</f:layout>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="Company Code" id="ElementCC">
+											<f:fields>
+												<Input id="inputCC" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Plant" id="ElementPlant">
+											<f:fields>
+												<Input id="inputPlant" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								
+							</f:Form>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Item To Be Packed" width="auto" class="sapUiResponsiveMargin">
+						<content>
+							<f:Form>
+								<f:layout>
+									<f:ResponsiveGridLayout/>
+								</f:layout>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement label="Material Number" id="eleMaterialNo">
+											<f:fields>
+												<Input id="inMaterial" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Batch" id="eleBatchNo">
+											<f:fields>
+												<Input id="inBatch" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Quantity" id="eleQty">
+											<f:fields>
+												<Input id="inQty" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="UOM" id="eleUOM">
+											<f:fields>
+												<Input id="inUOM" width="50%"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:Form>
+						</content>
+						<Toolbar height="3rem">
+							<Button icon="sap-icon://add" text="Pack Item" type="Emphasized" press="onAdd"/>
+						</Toolbar>
+					</Panel>
+					<Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Packed Item"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://sys-minus" text="Delete Row" type="Reject" press="onDelete"/>
+							</Toolbar>	
+						</headerToolbar>
+						<content>
+							<Table id="packItem" items="{/data}" mode="MultiSelect" growing="true" growingThreshold="4" growingScrollToLoad="false">
+								<items>
+									<ColumnListItem id="itemlist">
+										<cells>
+											<Text text="{Material}" id="Material"/>
+											<Text text="{Batch}" id="Batch"/>
+											<Text text="{Quantity}" id="Quantity"/>
+											<Text text="{Unit}" id="Unit"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="material">
+										<header>
+											<Label text="Material" id="_material"/>
+										</header>
+									</Column>
+									<Column id="batch">
+										<header>
+											<Label text="Batch" id="_batch"/>
+										</header>
+									</Column>
+									<Column id="qty">
+										<header>
+											<Label text="Quantity" id="_qty"/>
+										</header>
+									</Column>
+									<Column id="unit">
+										<header>
+											<Label text="Unit" id="_unit"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</content>
+					</Panel>
 				</Page>
 			</pages>
 		</App>
